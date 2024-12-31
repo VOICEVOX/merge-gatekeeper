@@ -5,9 +5,9 @@ import * as core from "./core.ts";
 
 test("Can get repository: auto_merge_enabled", async () => {
   const event = await fs
-    .readFile(`${import.meta.dirname}/events/autoMergeEnabled.json`, "utf8")
+    .readFile(`${import.meta.dirname}/testEvents/autoMergeEnabled.json`, "utf8")
     .then((data) => JSON.parse(data));
-  const repository = core.getRepository(event, "refs/heads/main");
+  const repository = core.getPullRequest(event, "refs/heads/main");
   assert.deepStrictEqual(repository, {
     owner: "nanatsuki-testing",
     repo: "merge-queue",
@@ -17,9 +17,9 @@ test("Can get repository: auto_merge_enabled", async () => {
 
 test("Can get repository: checks_requested", async () => {
   const event = await fs
-    .readFile(`${import.meta.dirname}/events/checksRequested.json`, "utf8")
+    .readFile(`${import.meta.dirname}/testEvents/checksRequested.json`, "utf8")
     .then((data) => JSON.parse(data));
-  const repository = core.getRepository(
+  const repository = core.getPullRequest(
     event,
     "refs/heads/gh-readonly-queue/main/pr-8-c3594e4d5fb79ddc7e171d4ca90f78e5fb836183",
   );
@@ -45,7 +45,7 @@ test("Can count scores", async () => {
       score: 2,
     },
   ];
-  const scores = await core.checkReview(
+  const scores = await core.countScore(
     rules,
     new Set(["sevenc-nanashi", "octocat", "github-actions"]),
   );
