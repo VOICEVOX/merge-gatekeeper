@@ -3,22 +3,23 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "node --test --experimental-strip-types",
-    "build": "node --experimental-strip-types ./build.ts",
+    "test": "tsx --test",
+    "build": "tsx ./build.ts",
+    "build:check": "tsx ./build.ts --check",
     "typecheck": "tsc --noEmit",
     "lint": "biome check",
     "lint:fix": "biome check --write",
-    "check": "pnpm run lint && pnpm run typecheck && pnpm run test"
+    "check": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build:check"
   },
-  "keywords": [],
-  "author": "",
   "license": "MIT",
+  "packageManager": "pnpm@9.15.2",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@octokit/types": "^13.6.2",
     "@octokit/webhooks-types": "^7.6.1",
     "@types/node": "^22.10.2",
     "rolldown": "1.0.0-beta.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   },
   "dependencies": {

@@ -22,7 +22,7 @@ jobs:
   approve:
     runs-on: ubuntu-latest
     steps:
-      - uses: sevenc-nanashi/approve-counter@v1
+      - uses: voicevox/merge-gatekeeper@main
         with:
           # GitHubのトークン。
           # チームを指定する時に必要です。
@@ -64,7 +64,7 @@ pnpm install
 # ビルド
 pnpm run build
 # ビルドがされているかのチェック
-pnpm run build --check
+pnpm run build:check
 
 # テストやフォーマットの確認
 pnpm run check

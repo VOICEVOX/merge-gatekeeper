@@ -1,6 +1,6 @@
-import { Chalk } from "chalk";
 import * as actions from "@actions/core";
 import type { Endpoints } from "@octokit/types";
+import { Chalk } from "chalk";
 import { Octokit } from "octokit";
 import * as core from "./core.ts";
 

@@ -1,5 +1,5 @@
+import fs from "node:fs/promises";
 import * as rolldown from "rolldown";
-import fs from "node:fs/promises"
 
 const output = await rolldown.build({
   input: "src/index.ts",
