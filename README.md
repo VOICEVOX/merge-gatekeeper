@@ -66,7 +66,7 @@ pnpm run build
 # ビルドがされているかのチェック
 pnpm run build:check
 
-# テストやフォーマットの確認
+# フォーマットの確認やテストの実行
 pnpm run check
 ```
 
