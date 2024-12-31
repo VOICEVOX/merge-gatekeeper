@@ -1,5 +1,5 @@
 {
-  "name": "approve-counter",
+  "name": "merge-gatekeeper",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -15,16 +15,16 @@
   "packageManager": "pnpm@9.15.2",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@octokit/types": "^13.6.2",
-    "@octokit/webhooks-types": "^7.6.1",
-    "@types/node": "^22.10.2",
+    "@octokit/types": "13.6.2",
+    "@octokit/webhooks-types": "7.6.1",
+    "@types/node": "22.10.2",
     "rolldown": "1.0.0-beta.1",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "tsx": ".19.2",
+    "typescript": "5.7.2"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
-    "chalk": "^5.4.1",
-    "octokit": "^4.0.3"
+    "@actions/core": "1.11.1",
+    "chalk": "5.4.1",
+    "octokit": "4.0.3"
   }
 }
