@@ -137,15 +137,6 @@ const main = async () => {
   const totalScore = scores.reduce((acc, { score }) => acc + score, 0);
   actions.setOutput("score", totalScore.toString());
 
-  // required_scoreが0の場合はoutputsへの書き込みのみ行う。
-  if (requiredScore === 0) {
-    actions.info(`Total score: ${totalScore}`);
-
-    actions.info("Skipping check");
-    actions.setOutput("result", "true");
-    return;
-  }
-
   actions.info(`Total score: ${totalScore} / ${requiredScore}`);
 
   if (totalScore < requiredScore) {

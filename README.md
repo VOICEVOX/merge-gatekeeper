@@ -20,7 +20,7 @@ on:
     types: [checks_requested]
 
 jobs:
-  approve:
+  merge_gatekeeper:
     runs-on: ubuntu-latest
     steps:
       - uses: voicevox/merge-gatekeeper@main
@@ -37,7 +37,6 @@ jobs:
           on_fail: fail
 
           # マージに必要なスコア。
-          # 0の場合は失敗しなくなります。
           required_score: 2
 
           # ユーザー/チームとポイントの関連付け。
@@ -50,7 +49,7 @@ jobs:
             // それ以外の行は無視されます。
 ```
 
-その後、Ruleset のRequire status checks to passに`approve`を追加してください。
+その後、Ruleset のRequire status checks to passに`merge_gatekeeper`を追加してください。
 
 ## 注意点
 

@@ -1,4 +1,4 @@
-name: "Approve Check"
+name: "Merge Gatekeeper"
 on:
   pull_request_target:
     types: [auto_merge_enabled]
@@ -6,7 +6,7 @@ on:
     types: [checks_requested]
 
 jobs:
-  approve:
+  merge_gatekeeper:
     runs-on: ubuntu-latest
     steps:
       - uses: voicevox/merge-gatekeeper@main
