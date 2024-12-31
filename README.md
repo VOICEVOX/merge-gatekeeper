@@ -49,7 +49,14 @@ jobs:
             // それ以外の行は無視されます。
 ```
 
-その後、Ruleset のRequire status checks to passに`merge_gatekeeper`を追加してください。
+その後、Githubリポジトリで以下の設定を行ってください。
+
+* Allow auto-mergeをONにする
+* Rulesetを作成し、
+  * Require status checks to passに`merge_gatekeeper`を追加する
+  * Require merge queueをONにする
+
+RulesetはこのリポジトリのものをExportしてImportすると簡単に設定できます。
 
 ## 注意点
 
