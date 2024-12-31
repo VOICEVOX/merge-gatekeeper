@@ -12,6 +12,7 @@
 以下のようなWorkflowを作成してください：
 
 ```yaml
+name: Merge Gatekeeper
 on:
   pull_request_target:
     types: [auto_merge_enabled]
@@ -27,7 +28,7 @@ jobs:
           # GitHubのトークン。
           # チームを指定する時に必要です。
           # OrgnizationのMember権限が必要です。
-          token: ${{ secrets.OWNER_TOKEN }}
+          token: ${{ secrets.GATEKEEPER_TOKEN }}
 
           # 失敗時の挙動。
           # fail: Workflowを失敗させる。（デフォルト）
