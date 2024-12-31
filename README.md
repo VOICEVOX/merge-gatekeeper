@@ -56,6 +56,8 @@ jobs:
   * Require status checks to passに`merge_gatekeeper`を追加する
   * Require merge queueをONにする
 
+RulesetはこのリポジトリのものをExportしてImportすると簡単に設定できます。
+
 ## 注意点
 
 - Review when Readyボタンを押した人もApproveしたものとしてカウントされます。
