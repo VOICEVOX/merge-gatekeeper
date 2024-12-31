@@ -10,7 +10,7 @@ export type GitHubEvent =
   | webhooks.PullRequestAutoMergeEnabledEvent
   | webhooks.MergeGroupChecksRequestedEvent;
 
-export const getRepository = (event: GitHubEvent, ref: string) => {
+export const getPullRequest = (event: GitHubEvent, ref: string) => {
   const owner = event.repository.owner.login;
   const repo = event.repository.name;
 
@@ -33,7 +33,7 @@ export const getRepository = (event: GitHubEvent, ref: string) => {
   return { owner, repo, prNumber };
 };
 
-export const checkReview = async (
+export const countScore = async (
   rules: ScoreRule[],
   approvedUsers: Set<string>,
 ) => {

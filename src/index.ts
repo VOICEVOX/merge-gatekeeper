@@ -40,6 +40,7 @@ const main = async () => {
     throw new Error("Invalid on_fail");
   }
 
+  // ルールを読み込む。チームのメンバーもここで取得する。
   const octokit = new Octokit({ auth: token });
   const rules: core.ScoreRule[] = [];
   let teams: Team[] | undefined;
@@ -103,8 +104,10 @@ const main = async () => {
     );
   }
 
-  const { owner, repo, prNumber } = core.getRepository(event, ref);
+  // 入力からリポジトリとPR番号を取得する。
+  const { owner, repo, prNumber } = core.getPullRequest(event, ref);
 
+  // PRにApproveを出したユーザーを取得する。
   const { data: reviews } = await octokit.rest.pulls.listReviews({
     owner,
     repo,
@@ -116,13 +119,16 @@ const main = async () => {
       .map((review) => review.user?.login)
       .filter((login) => login != null),
   );
+
+  // Merge when Readyを押したユーザーもApproveしたことにする。
   approvedUsers.add(event.sender.login);
   actions.info("Approved users:");
   for (const user of approvedUsers) {
     actions.info(`  ${chalk.green(user)}`);
   }
 
-  const scores = await core.checkReview(rules, approvedUsers);
+  // スコアを計算する。
+  const scores = await core.countScore(rules, approvedUsers);
   actions.info("Scores:");
   for (const { user, score } of scores) {
     actions.info(`  ${chalk.green(user)}: ${score}`);
@@ -131,6 +137,7 @@ const main = async () => {
   const totalScore = scores.reduce((acc, { score }) => acc + score, 0);
   actions.setOutput("score", totalScore.toString());
 
+  // required_scoreが0の場合はoutputsへの書き込みのみ行う。
   if (requiredScore === 0) {
     actions.info(`Total score: ${totalScore}`);
 
