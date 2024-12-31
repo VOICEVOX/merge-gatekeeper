@@ -8,6 +8,7 @@ const output = await rolldown.build({
     minify: true,
   },
   treeshake: true,
+  write: false,
 });
 
 const isCheck = process.argv.includes("--check");
