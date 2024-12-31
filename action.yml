@@ -1,0 +1,34 @@
+name: "Approve Counter"
+description: "マージキューのためのスコアベースのApprove数チェッカー。"
+branding:
+  icon: "check-circle"
+  color: "green"
+inputs:
+  token:
+    description: "APIに使うアクセストークン。"
+    default: "${{ github.token }}"
+  event:
+    description: "github.event。"
+    default: "${{ toJson(github.event) }}"
+  ref:
+    description: "github.ref。"
+    default: "${{ github.ref }}"
+  score_rules:
+    description: "スコアのルール。"
+    required: true
+  required_score:
+    description: "必要なスコア。"
+    required: true
+  on_fail:
+    description: "失敗時の挙動。"
+    default: "fail"
+
+outputs:
+  score:
+    description: "スコア。"
+  result:
+    description: "結果。"
+
+runs:
+  using: node20
+  main: "dist/index.js"
