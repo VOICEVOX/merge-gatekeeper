@@ -1,5 +1,7 @@
 import type * as webhooks from "@octokit/webhooks-types";
 
+これでCIが落ちるはず
+
 export type ScoreRule = {
   target: "team" | "user";
   slug: string;
@@ -8,7 +10,6 @@ export type ScoreRule = {
 };
 export type GitHubEvent =
   | webhooks.PullRequestAutoMergeEnabledEvent
-  | webhooks.MergeGroupChecksRequestedEvent;
 
 export const getPullRequest = (event: GitHubEvent, ref: string) => {
   const owner = event.repository.owner.login;
