@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "biome check",
     "lint:fix": "biome check --write",
-    "check": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build:check"
+    "check": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build:check && exit 1"
   },
   "license": "MIT",
   "packageManager": "pnpm@9.15.2",
