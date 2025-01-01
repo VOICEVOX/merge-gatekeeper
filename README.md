@@ -1,3 +1,5 @@
+check force merge
+
 # Merge Gatekeeper
 
 人やチームによって重みを付けられるApprove数チェッカーです。
