@@ -1,4 +1,9 @@
 name: "Merge Gatekeeper"
+
+# auto mergeとmerge queue用のチェッカー。
+# Approve数が足りているか、すべてのテストが通っているかを確認します。
+# 詳細： https://github.com/VOICEVOX/merge-gatekeeper
+
 on:
   pull_request_target:
     types: [auto_merge_enabled]
@@ -21,4 +26,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           self: merge_gatekeeper
           # https://github.com/upsidr/merge-gatekeeper/issues/71#issuecomment-1660607977
-          ref: ${{ github.event.action == 'auto_merge_enabled' && github.event.pull_request.head.ref || github.ref }}
+          ref: ${{ github.event.pull_request && github.event.pull_request.head.ref || github.ref }}
