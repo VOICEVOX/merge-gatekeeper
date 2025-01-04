@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "test": "tsx --test",
+    "test": "tsx --test ./**/*.test.ts",
     "build": "tsx ./build.ts",
     "build:check": "tsx ./build.ts --check",
     "typecheck": "tsc --noEmit",
