@@ -3,7 +3,10 @@ on:
   push:
     branches:
       - main
+      - "!gh-readonly-queue/**"
   pull_request:
+  merge_group:
+    types: [checks_requested]
 
 jobs:
   test:
