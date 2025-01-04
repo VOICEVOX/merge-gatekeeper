@@ -1,9 +1,11 @@
 name: Test
 on:
   push:
-    branches:
-      - main
+    branches-ignore:
+      - "gh-readonly-queue/**"
   pull_request:
+  merge_group:
+    types: [checks_requested]
 
 jobs:
   test:
